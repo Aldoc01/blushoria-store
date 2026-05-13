@@ -14,10 +14,8 @@
 
   <link
     rel="stylesheet"
-    href="styles.css"
+    href="style.css"
   >
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 </head>
 
@@ -27,7 +25,7 @@
 
   <section class="hero">
 
-    <div class="hero-overlay"></div>
+    <div class="overlay"></div>
 
     <div class="hero-content">
 
@@ -46,10 +44,8 @@
 
       <a href="#products">
 
-        <button class="shop-btn">
-
+        <button>
           Shop Now 💖
-
         </button>
 
       </a>
@@ -60,51 +56,129 @@
 
   <!-- PRODUCTS -->
 
-  <section class="products-heading">
-
-    <h2>
-      Our Products ✨
-    </h2>
-
-  </section>
-
   <section
     class="products"
     id="products"
-  ></section>
+  >
+
+    <!-- PRODUCT 1 -->
+
+    <div class="card">
+
+      <img
+        src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?q=80&w=1200&auto=format&fit=crop"
+      >
+
+      <h2>
+        Magic Lipgloss
+      </h2>
+
+      <p>
+        Luxury glossy lip shine ✨
+      </p>
+
+      <h3>
+        ₦1500
+      </h3>
+
+      <button
+      onclick="addToCart(
+      'Magic Lipgloss',
+      1500
+      )">
+
+        Add To Cart 💖
+
+      </button>
+
+    </div>
+
+    <!-- PRODUCT 2 -->
+
+    <div class="card">
+
+      <img
+        src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=1200&auto=format&fit=crop"
+      >
+
+      <h2>
+        Mini Perfume
+      </h2>
+
+      <p>
+        Soft luxury feminine scent 💕
+      </p>
+
+      <h3>
+        ₦3000
+      </h3>
+
+      <button
+      onclick="addToCart(
+      'Mini Perfume',
+      3000
+      )">
+
+        Add To Cart 💖
+
+      </button>
+
+    </div>
+
+    <!-- PRODUCT 3 -->
+
+    <div class="card">
+
+      <img
+        src="https://images.unsplash.com/photo-1631730486572-2260c1f1f3e8?q=80&w=1200&auto=format&fit=crop"
+      >
+
+      <h2>
+        Girlie Lip Balm
+      </h2>
+
+      <p>
+        Cute glossy pink lip balm 💄
+      </p>
+
+      <h3>
+        ₦1800
+      </h3>
+
+      <button
+      onclick="addToCart(
+      'Girlie Lip Balm',
+      1800
+      )">
+
+        Add To Cart 💖
+
+      </button>
+
+    </div>
+
+  </section>
 
   <!-- CART -->
 
-  <section class="cart-section">
+  <section class="cart">
 
     <h2>
       Your Cart 🛒
     </h2>
 
+    <div id="cart-items"></div>
+
     <h3>
 
       Total:
       <span id="cart-total">
-
         ₦0
-
       </span>
 
     </h3>
 
-    <input
-      type="text"
-      id="customer-name"
-      placeholder="Your Name"
-    >
-
-    <input
-      type="text"
-      id="customer-address"
-      placeholder="Delivery Address"
-    >
-
-    <button onclick="orderOnWhatsApp()">
+    <button onclick="orderNow()">
 
       Order On WhatsApp ✨
 
@@ -116,17 +190,14 @@
 
   <footer>
 
-    <p>
-      © 2025 BLUSHORIA STORE ✨
-    </p>
-
-    <span>
-      Luxury Girlie Essentials 💕
-    </span>
+    © 2025 BLUSHORIA ✨
 
   </footer>
 
-  <script src="app.js"></script>
+  <script
+  type="module"
+  src="script.js">
+  </script>
 
 </body>
 </html>
