@@ -2,7 +2,7 @@ import { supabase } from './supabase.js'
 
 let cart = []
 
-function addToCart(product, price) {
+function addToCart(product, price){
 
   cart.push({
     product,
@@ -11,39 +11,56 @@ function addToCart(product, price) {
 
   updateCart()
 
-  alert(product + ' added to cart ✨')
+  alert(
+    product +
+    ' added to cart 💖'
+  )
 }
 
-function updateCart() {
+function updateCart(){
 
-  const cartContainer =
-    document.getElementById('cart-items')
+  const cartItems =
+  document.getElementById(
+    'cart-items'
+  )
 
-  const totalContainer =
-    document.getElementById('cart-total')
+  const cartTotal =
+  document.getElementById(
+    'cart-total'
+  )
 
-  cartContainer.innerHTML = ''
+  cartItems.innerHTML = ''
 
   let total = 0
 
-  cart.forEach(item => {
+  cart.forEach(item=>{
 
     total += item.price
 
-    cartContainer.innerHTML += `
-      <p>
-        ${item.product} — ₦${item.price}
-      </p>
+    cartItems.innerHTML += `
+
+      <div class="cart-item">
+
+        <p>
+          ${item.product}
+        </p>
+
+        <p>
+          ₦${item.price}
+        </p>
+
+      </div>
+
     `
   })
 
-  totalContainer.innerText =
-    '₦' + total
+  cartTotal.innerText =
+  '₦' + total
 }
 
-async function orderNow() {
+async function orderNow(){
 
-  if (cart.length === 0) {
+  if(cart.length === 0){
 
     alert('Cart is empty')
 
@@ -51,37 +68,42 @@ async function orderNow() {
   }
 
   const productNames =
-    cart.map(item => item.product)
-    .join(', ')
+  cart.map(item=>item.product)
+  .join(', ')
 
   const total =
-    cart.reduce((sum, item) =>
-      sum + item.price, 0)
+  cart.reduce(
+    (sum,item)=>
+    sum + item.price,
+    0
+  )
 
-  const order = {
+  const orderData = {
 
     customer_name:
-      'Website Customer',
+    'Website Customer',
 
     address:
-      'Nigeria',
+    'Nigeria',
 
     product:
-      productNames,
+    productNames,
 
     total:
-      '₦' + total,
+    '₦' + total,
 
     status:
-      'Pending'
+    'Pending'
   }
 
   const { data, error } =
-    await supabase
-      .from('orders')
-      .insert([order])
+  await supabase
 
-  if (error) {
+  .from('orders')
+
+  .insert([orderData])
+
+  if(error){
 
     console.log(error)
 
@@ -97,6 +119,7 @@ async function orderNow() {
   )
 
   const whatsappMessage =
+
 `Hello Blushoria ✨
 
 I want to order:
@@ -106,10 +129,16 @@ ${productNames}
 Total: ₦${total}`
 
   window.open(
+
 `https://wa.me/2347012620748?text=${encodeURIComponent(whatsappMessage)}`,
-    '_blank'
+
+  '_blank'
+
   )
 }
 
-window.addToCart = addToCart
-window.orderNow = orderNow
+window.addToCart =
+addToCart
+
+window.orderNow =
+orderNow
